@@ -394,7 +394,7 @@
                 ✅ You're on the list! Check your email for next steps.
             </div>
             
-            <form id="earlyAccessForm">
+            <form id="earlyAccessForm" action="https://formspree.io/f/meozpgep" method="POST">
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input 
@@ -533,30 +533,55 @@
         document.getElementById('earlyAccessForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const email = document.getElementById('email').value;
-            const beadType = document.getElementById('beadType').value;
+            const form = this;
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
             
-            // Here you would normally send this to your backend
-            // For now, we'll just show a success message
-            console.log('Form submitted:', { email, beadType });
+            // Update button state
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
             
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Hide form
-            this.style.display = 'none';
-            
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-            
-            // Track conversion if you have analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'conversion', {
-                    'event_category': 'engagement',
-                    'event_label': 'early_access_signup'
-                });
-            }
+            // Submit to Formspree
+            fetch('https://formspree.io/f/meozpgep', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Hide form
+                    form.style.display = 'none';
+                    
+                    // Scroll to success message
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Track conversion if you have analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'conversion', {
+                            'event_category': 'engagement',
+                            'event_label': 'early_access_signup'
+                        });
+                    }
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show error message
+                alert('Sorry, there was an error submitting the form. Please try again.');
+            });
         });
         
         // Smooth scroll for CTA button
