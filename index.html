@@ -391,7 +391,7 @@
             </div>
             
             <div class="success-message" id="successMessage">
-                ✅ You're on the list! Check your email for next steps.
+                ✅ Thanks for your interest, we'll contact you soon!
             </div>
             
             <form id="earlyAccessForm" action="https://formspree.io/f/meozpgep" method="POST">
@@ -529,8 +529,23 @@
     </footer>
 
     <script>
+        // Attach UTM / subreddit parameters to the signup form so they’re sent to Formspree
+        const urlParams = new URLSearchParams(window.location.search);
+        const earlyForm = document.getElementById('earlyAccessForm');
+        if (earlyForm) {
+            ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','subreddit'].forEach(param => {
+                const value = urlParams.get(param);
+                if (value) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = param;
+                    input.value = value;
+                    earlyForm.appendChild(input);
+                }
+            });
+        }
         // Form submission handler
-        document.getElementById('earlyAccessForm').addEventListener('submit', function(e) {
+        earlyForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const form = this;
