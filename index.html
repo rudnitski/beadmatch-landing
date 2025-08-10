@@ -586,60 +586,57 @@
                 }
             });
         }
-        // Form submission handler
-        earlyForm.addEventListener('submit', function(e) {
+        // Form submission handler (send ALL fields including hidden UTM inputs)
+        if (earlyForm) {
+          earlyForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const form = this;
-            const formData = new FormData(form);
+            const formData = new FormData(form); // includes email, beadType, and hidden utm_*
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
-            
+
             // Update button state
             submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
-            
-            // Submit to Formspree
-            fetch('https://formspree.io/f/meozpgep', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+
+            fetch(earlyForm.action, { // use the form's action URL
+              method: 'POST',
+              body: formData,
+              headers: { 'Accept': 'application/json' }
             })
             .then(response => {
-                if (response.ok) {
-                    // Show success message
-                    document.getElementById('successMessage').style.display = 'block';
-                    
-                    // Hide form
-                    form.style.display = 'none';
-                    
-                    // Scroll to success message
-                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Track conversion if you have analytics
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'conversion', {
-                            'event_category': 'engagement',
-                            'event_label': 'early_access_signup'
-                        });
+              if (response.ok) {
+                document.getElementById('successMessage').style.display = 'block';
+                form.style.display = 'none';
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+
+                // Analytics hooks
+                if (window.plausible) {
+                  plausible('signup_success', {
+                    props: {
+                      utm_source: urlParams.get('utm_source') || '',
+                      utm_campaign: urlParams.get('utm_campaign') || '',
+                      utm_content: urlParams.get('utm_content') || '',
+                      subreddit: urlParams.get('subreddit') || ''
                     }
-                } else {
-                    throw new Error('Form submission failed');
+                  });
                 }
+                if (typeof gtag !== 'undefined') {
+                  gtag('event', 'early_access_signup');
+                }
+              } else {
+                throw new Error('Form submission failed');
+              }
             })
             .catch(error => {
-                console.error('Error:', error);
-                
-                // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Show error message
-                alert('Sorry, there was an error submitting the form. Please try again.');
+              console.error('Error:', error);
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+              alert('Sorry, there was an error submitting the form. Please try again.');
             });
-        });
+          });
+        }
         
         // Smooth scroll for CTA button
         document.querySelector('.cta-button').addEventListener('click', function(e) {
