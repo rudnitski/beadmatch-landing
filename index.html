@@ -377,6 +377,17 @@
                 gap: 30px;
             }
         }
+        /* Legal & footer links */
+        .legal { background: #ffffff; padding: 40px 20px; color: #2c3e50; }
+        .legal .container { max-width: 900px; }
+        .legal h2 { font-size: 1.6rem; margin: 10px 0 10px; }
+        .legal h3 { font-size: 1.1rem; margin: 16px 0 8px; }
+        .legal p { margin-bottom: 12px; line-height: 1.65; color: #444; }
+        .legal ul { margin: 8px 0 16px 20px; }
+        .legal li { margin-bottom: 8px; }
+        footer a { color: #fff; text-decoration: underline; }
+        .consent-wrap { font-size: 0.9rem; color: #444; }
+        .consent-wrap a { color: #667eea; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -401,7 +412,7 @@
             <div class="form-header">
                 <span class="limited-spots">🔥 Only 50 Beta Spots Available</span>
                 <h2>Get Free Early Access</h2>
-                <p style="color: #666;">Be first to try BeadMatch when we launch + 50% lifetime discount</p>
+                <p style="color: #666;">Be first to try BeadMatch when we launch. Beta is free; no payment is collected on this site.</p>
             </div>
             
             <div class="success-message" id="successMessage">
@@ -429,13 +440,12 @@
                         placeholder="e.g., Seed beads, Perler, Jewelry making..."
                     >
                 </div>
-                
                 <button type="submit" class="submit-btn">
                     Reserve My Spot (Free)
                 </button>
                 
                 <p class="privacy-note">
-                    🔒 We'll never spam you. Unsubscribe anytime.
+                    🔒 By clicking “Reserve My Spot”, you agree to our <a href="#terms">Terms</a> and <a href="#privacy">Privacy Policy</a> and consent to receive emails about the BeadMatch beta and product updates. You can unsubscribe anytime.
                 </p>
             </form>
         </div>
@@ -521,7 +531,7 @@
                 <div class="feature-item">
                     <span class="feature-check">✓</span>
                     <div class="feature-text">
-                        <strong>50% Lifetime Discount:</strong> Beta users get half off forever ($4.99/mo instead of $9.99)
+                        <strong>Early Access Perks:</strong> Priority invites, direct feedback to shape features, and first access to new tools.
                     </div>
                 </div>
             </div>
@@ -537,9 +547,27 @@
         </div>
     </section>
 
+    <!-- Legal: Privacy & Terms -->
+    <section class="legal" id="legal">
+        <div class="container">
+            <h2 id="privacy">Privacy Policy (Summary)</h2>
+            <p>We collect only what you submit: your email address and optional beading type, plus campaign parameters (e.g., utm_source) that are appended as hidden fields when you submit. We use this information to provide early-access invitations, product news, surveys, and support. Form submissions are processed by Formspree and stored securely. We also use Plausible Analytics to understand traffic; Plausible is privacy-friendly and does not use cookies or store personally identifiable data.</p>
+            <ul>
+                <li><strong>Data we collect:</strong> email, optional beading type, and UTM parameters you submit.</li>
+                <li><strong>How we use it:</strong> to contact you about BeadMatch beta and product updates; to evaluate interest and improve the product.</li>
+                <li><strong>Sharing:</strong> we do not sell personal data. Third-party processors: Formspree (form handling) and Plausible (analytics).</li>
+                <li><strong>Retention & deletion:</strong> we retain data until you unsubscribe or request deletion. Email <a href="mailto:beadmatchapp@gmail.com">beadmatchapp@gmail.com</a> to access or delete your data.</li>
+            </ul>
+
+            <h2 id="terms">Terms (Beta & Pricing)</h2>
+            <p>Beta access is free and no payment is collected on this site. We may introduce paid plans after beta; any pricing and terms will be disclosed before you opt in. No purchase is necessary to join the beta.</p>
+            <p>BeadMatch is not affiliated with or endorsed by Miyuki, DMC, or Toho. All trademarks belong to their respective owners.</p>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
-        <p>© 2025 BeadMatch | Made with ❤️ by crafters, for crafters</p>
+        <p>© 2025 BeadMatch • <a href="#privacy">Privacy</a> • <a href="#terms">Terms</a> • Contact: <a href="mailto:beadmatchapp@gmail.com">beadmatchapp@gmail.com</a></p>
     </footer>
 
     <script>
