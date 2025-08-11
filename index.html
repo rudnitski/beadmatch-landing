@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeadMatch - Never Buy Duplicate Bead Colors Again</title>
-    <meta property="og:title" content="BeadMatch – Never Buy Duplicate Bead Colors Again">
+    <title>Turn any pattern into an exact bead color shopping list – BeadMatch</title>
+    <meta property="og:title" content="Turn any pattern into an exact bead color shopping list – BeadMatch">
     <meta property="og:image" content="hero-banner.jpg">
     <script async defer data-domain="beadmatch-landing.vercel.app" src="https://plausible.io/js/script.js"></script>
     <style>
@@ -394,10 +394,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Stop Buying Bead Colors<br>You Already Have! 🎨</h1>
-            <p class="subtitle">
-                BeadMatch uses AI to analyze your bead collection and tells you 
-                <span class="highlight">exactly which colors you need</span> for any pattern
+            <h1 id="mainHeadline">Turn any pattern into an exact<br>bead color shopping list</h1>
+            <p class="subtitle" id="subHeadline">
+                Upload a pattern or inspiration photo and BeadMatch will return the exact colors and counts you need — <span class="highlight">free beta</span>.
             </p>
             <img src="hero-banner.jpg"
                  alt="Messy bead stash and AI analysis result"
@@ -427,17 +426,10 @@
                         id="email" 
                         name="email" 
                         placeholder="crafter@example.com" 
+                        autocomplete="email"
+                        inputmode="email"
+                        autofocus
                         required
-                    >
-                </div>
-                
-                <div class="form-group">
-                    <label for="beadType">What type of beading do you do?</label>
-                    <input 
-                        type="text" 
-                        id="beadType" 
-                        name="beadType" 
-                        placeholder="e.g., Seed beads, Perler, Jewelry making..."
                     >
                 </div>
                 <button type="submit" class="submit-btn">
@@ -458,18 +450,18 @@
             <div class="problems">
                 <div class="problem-card">
                     <div class="problem-icon">💸</div>
-                    <h3>Wasting Money</h3>
-                    <p>"I bought these colors 3 times because I forgot I had them buried in my stash"</p>
+                    <h3>Over/under buying</h3>
+                    <p>"I either buy too many or run out because I don’t know the counts."</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-icon">⏰</div>
-                    <h3>Hours Sorting</h3>
-                    <p>"Sorting through thousands of beads to check what I have takes forever"</p>
+                    <h3>Counting takes forever</h3>
+                    <p>"Estimating bead counts for a pattern by hand is tedious and error‑prone."</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-icon">😩</div>
-                    <h3>Project Delays</h3>
-                    <p>"Started a pattern only to realize I'm missing 3 colors halfway through"</p>
+                    <h3>Mid‑project surprises</h3>
+                    <p>"I start a pattern and discover I’m short 3 colors or 200 beads."</p>
                 </div>
             </div>
         </div>
@@ -482,18 +474,18 @@
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Snap Your Stash</h3>
-                    <p>Take a quick photo of your bead collection - no sorting needed!</p>
+                    <h3>Take a photo of your pattern</h3>
+                    <p>Snap a bracelet/loom/peyote pattern or upload a picture of the design you want to make.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Upload Any Pattern</h3>
-                    <p>Show us what you want to make - a pattern, Pinterest photo, or inspiration image</p>
+                    <h3>AI detects colors & counts</h3>
+                    <p>We extract the exact colors used in the pattern and how many beads of each you’ll need.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Get Your Shopping List</h3>
-                    <p>Instantly see which exact colors you need with Miyuki/DMC/Toho codes</p>
+                    <h3>Get your shopping list</h3>
+                    <p>See a clean list with color swatches and per‑color bead counts you can buy or save.</p>
                 </div>
             </div>
         </div>
@@ -507,31 +499,31 @@
                 <div class="feature-item">
                     <span class="feature-check">✓</span>
                     <div class="feature-text">
-                        <strong>AI Color Detection:</strong> Identifies all colors in your collection automatically
+                        <strong>Pattern → list:</strong> Turn any bead‑jewelry pattern into an exact bead count list.
                     </div>
                 </div>
                 <div class="feature-item">
                     <span class="feature-check">✓</span>
                     <div class="feature-text">
-                        <strong>Pattern Analysis:</strong> Works with any pattern or inspiration photo
+                        <strong>Color swatches & counts:</strong> Clear swatches with per‑color totals so you know exactly what to buy.
                     </div>
                 </div>
                 <div class="feature-item">
                     <span class="feature-check">✓</span>
                     <div class="feature-text">
-                        <strong>Exact Color Codes:</strong> Get specific Miyuki, DMC, or Toho color numbers
+                        <strong>Works from photos:</strong> Use camera shots, screenshots, or PDFs of your pattern.
                     </div>
                 </div>
                 <div class="feature-item">
                     <span class="feature-check">✓</span>
                     <div class="feature-text">
-                        <strong>Shopping Links:</strong> Direct links to buy only what you need
+                        <strong>Save & export:</strong> Save your lists for later; simple copy/export options planned in beta.
                     </div>
                 </div>
                 <div class="feature-item">
                     <span class="feature-check">✓</span>
                     <div class="feature-text">
-                        <strong>Early Access Perks:</strong> Priority invites, direct feedback to shape features, and first access to new tools.
+                        <strong>Early access perks:</strong> Priority invites, direct feedback to shape features, and first access to new tools.
                     </div>
                 </div>
             </div>
@@ -541,7 +533,7 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Save Time & Money?</h2>
+            <h2>Get exact bead counts from any pattern</h2>
             <p>Join 50 beta testers getting early access</p>
             <a href="#earlyAccessForm" class="cta-button">Get Early Access</a>
         </div>
@@ -551,9 +543,9 @@
     <section class="legal" id="legal">
         <div class="container">
             <h2 id="privacy">Privacy Policy (Summary)</h2>
-            <p>We collect only what you submit: your email address and optional beading type, plus campaign parameters (e.g., utm_source) that are appended as hidden fields when you submit. We use this information to provide early-access invitations, product news, surveys, and support. Form submissions are processed by Formspree and stored securely. We also use Plausible Analytics to understand traffic; Plausible is privacy-friendly and does not use cookies or store personally identifiable data.</p>
+            <p>We collect only what you submit: your email address plus campaign parameters (e.g., utm_source) that are appended as hidden fields when you submit. We use this information to provide early-access invitations, product news, surveys, and support. Form submissions are processed by Formspree and stored securely. We also use Plausible Analytics to understand traffic; Plausible is privacy-friendly and does not use cookies or store personally identifiable data.</p>
             <ul>
-                <li><strong>Data we collect:</strong> email, optional beading type, and UTM parameters you submit.</li>
+                <li><strong>Data we collect:</strong> email and UTM parameters you submit.</li>
                 <li><strong>How we use it:</strong> to contact you about BeadMatch beta and product updates; to evaluate interest and improve the product.</li>
                 <li><strong>Sharing:</strong> we do not sell personal data. Third-party processors: Formspree (form handling) and Plausible (analytics).</li>
                 <li><strong>Retention & deletion:</strong> we retain data until you unsubscribe or request deletion. Email <a href="mailto:beadmatchapp@gmail.com">beadmatchapp@gmail.com</a> to access or delete your data.</li>
@@ -561,7 +553,7 @@
 
             <h2 id="terms">Terms (Beta & Pricing)</h2>
             <p>Beta access is free and no payment is collected on this site. We may introduce paid plans after beta; any pricing and terms will be disclosed before you opt in. No purchase is necessary to join the beta.</p>
-            <p>BeadMatch is not affiliated with or endorsed by Miyuki, DMC, or Toho. All trademarks belong to their respective owners.</p>
+            <p>BeadMatch is not affiliated with or endorsed by any bead or craft brands. All trademarks belong to their respective owners.</p>
         </div>
     </section>
 
