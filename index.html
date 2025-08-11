@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turn any pattern into an exact bead color shopping list – BeadMatch</title>
     <meta property="og:title" content="Turn any pattern into an exact bead color shopping list – BeadMatch">
-    <meta property="og:image" content="hero-banner.jpg">
+    <meta property="og:image" content="step1.jpg">
+    <link rel="preload" as="image" href="step1.jpg">
     <script async defer data-domain="beadmatch-landing.vercel.app" src="https://plausible.io/js/script.js"></script>
     <style>
         * {
@@ -31,7 +32,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 60px 20px 60px;
             color: white;
         }
         
@@ -72,7 +73,7 @@
             border-radius: 12px;
             padding: 30px;
             max-width: 500px;
-            margin: 0 auto 60px;
+            margin: 40px auto 60px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
@@ -388,6 +389,40 @@
         footer a { color: #fff; text-decoration: underline; }
         .consent-wrap { font-size: 0.9rem; color: #444; }
         .consent-wrap a { color: #667eea; text-decoration: underline; }
+        /* Two-step hero images */
+        .hero-steps { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 16px; 
+            margin-top: 24px; 
+        }
+        .hero-step { text-align: left; }
+        .hero-step img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+            display: block;
+            margin: 0 auto;
+        }
+        .hero-step figcaption { 
+            margin-top: 8px; 
+            font-size: 0.95rem; 
+            color: rgba(255,255,255,.95); 
+        }
+        .step-pill { 
+            display: inline-block; 
+            padding: 2px 10px; 
+            border-radius: 999px; 
+            background: #ffffff; 
+            color: #667eea; 
+            font-weight: 700; 
+            margin-right: 8px; 
+        }
+        @media (min-width: 900px) {
+            .hero-steps { grid-template-columns: 1fr 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -396,12 +431,28 @@
         <div class="container">
             <h1 id="mainHeadline">Turn any pattern into an exact<br>bead color shopping list</h1>
             <p class="subtitle" id="subHeadline">
-                Upload a pattern or inspiration photo and BeadMatch will return the exact colors and counts you need — <span class="highlight">free beta</span>.
+                Upload a pattern or inspiration photo and BeadMatch will return the exact colors and counts you need — <span class="highlight">never buy the wrong amount again</span>.
             </p>
-            <img src="hero-banner.jpg"
-                 alt="Messy bead stash and AI analysis result"
-                 class="hero-img"
-                 loading="lazy">
+            <div class="hero-steps">
+                <figure class="hero-step">
+                    <img 
+                        src="step1.jpg" 
+                        alt="Step 1 – take a photo of your pattern"
+                        fetchpriority="high"
+                        decoding="async"
+                        sizes="(max-width: 900px) 100vw, 400px">
+                    <figcaption><span class="step-pill">STEP 1</span> Take a photo of your pattern</figcaption>
+                </figure>
+                <figure class="hero-step">
+                    <img 
+                        src="step2.jpg" 
+                        alt="Step 2 – see exact bead counts as a shopping list"
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 900px) 100vw, 400px">
+                    <figcaption><span class="step-pill">STEP 2</span> Get exact bead counts</figcaption>
+                </figure>
+            </div>
         </div>
     </section>
 
@@ -409,9 +460,9 @@
     <div class="container">
         <div class="early-access-form">
             <div class="form-header">
-                <span class="limited-spots">🔥 Only 50 Beta Spots Available</span>
-                <h2>Get Free Early Access</h2>
-                <p style="color: #666;">Be first to try BeadMatch when we launch. Beta is free; no payment is collected on this site.</p>
+                <span class="limited-spots">🔥 Limited Beta - Only 50 Spots Left</span>
+                <h2>Join the Free Beta</h2>
+                <p style="color: #666;">Get exact bead counts from any pattern. Beta is completely free — no payment required.</p>
             </div>
             
             <div class="success-message" id="successMessage">
@@ -428,7 +479,6 @@
                         placeholder="crafter@example.com" 
                         autocomplete="email"
                         inputmode="email"
-                        autofocus
                         required
                     >
                 </div>
